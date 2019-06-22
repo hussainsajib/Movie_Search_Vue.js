@@ -28,8 +28,10 @@ export default {
         return {
             status: {
                 loading: false,
-                errored: false
+                errored: false,
+                search: false
             },
+            searchString: null,
             currentPage: 1,
             movieList: null
         }
@@ -42,7 +44,7 @@ export default {
         try{
             this.status.loading = true,
             window.addEventListener('scroll',this.scrollEvent);
-            this.movieList = await getData(this.currentPage);
+            this.movieList = await getData(this.currentPage, this.status.search);
             this.status.loading = false;
         } catch(error){
             this.status.errored = true;
@@ -55,13 +57,19 @@ export default {
         scrollEvent: async function(e){
             if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
                 this.currentPage++;
-                const data = await getData(this.currentPage);
+                const data = await getData(this.currentPage, this.status.search, this.searchString);
                 console.log(data);
                 this.movieList = this.movieList.concat(data);
             }
         },
-        searchChange: function(e){
-            console.log(e);
+        searchChange: async function(string){
+            this.currentPage = 1;
+            this.movieList = [];
+            this.searchString = string;
+            this.status.search = true;
+            const data = await getData(this.currentPage, this.status.search, this.searchString);
+            this.movieList = this.movieList.concat(data);
+            console.log(string);
         }
     }
 }
