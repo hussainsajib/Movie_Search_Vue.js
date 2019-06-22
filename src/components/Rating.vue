@@ -1,0 +1,26 @@
+<template>
+    <div><h2 class="movieRating">{{rating}}</h2></div>
+</template>
+
+<script>
+export default {
+    name: "Rating",
+    props: ['rating']
+}
+</script>
+
+<style>
+.movieRating{
+    border: 5px solid rgb(218,165,32);
+    background-color: goldenrod;
+    color: white;
+    width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.4em;
+    padding-top: 2%;
+}
+
+</style>

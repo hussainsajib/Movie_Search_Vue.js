@@ -1,14 +1,16 @@
 <template>
-    <div>
-        <div v-if="status.errored">
+    <div id="maincontainer">
+        <div v-if="status.errored" class="container">
             <p>There was an error loading the data</p>
         </div>
         <div v-else>
             <div v-if="status.loadin">
                 <p>loading...</p>
             </div>
-            <div v-else>
-                <p>loaded all data</p>
+            <div v-else id="velse">
+                <div v-for="movie of movieList" :key="movie.id" class="movieholder col-md-6">
+                    <Movie :movie="movie" />
+                </div>
             </div>
         </div>
     </div>
@@ -17,6 +19,7 @@
 
 <script>
 import getData from '../fetchData'
+import Movie from './Movie'
 export default {
     name: "Movies",
     data: function(){
@@ -27,6 +30,9 @@ export default {
             },
             movieList: null
         }
+    },
+    components: {
+        Movie
     },
     created: async function (){
         try{
@@ -40,6 +46,21 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container{
+    border: 1px solid red;
+    background-color: red;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
 
+.movieholder{
+    margin-top: 2%;
+}
+
+#velse{
+    display: flex;
+    flex-wrap: wrap;
+}
 </style>

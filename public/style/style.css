@@ -1,5 +1,12 @@
 /*  Webpage Elements  */
 
+body{
+  margin-left: 0;
+  margin-right:0;
+  padding:0;
+  background-color:pink;
+}
+
 h1{
   margin-top: 2%;
   color: black;
@@ -19,65 +26,19 @@ h1{
   color: goldenrod;
 }
 
-.moviediv{
-  margin: 30px;
-  padding: 10px;
-  
-  
-}
-
-.flex-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  
-
-}
-
-.titleDiv{
-  margin-top: 2%;
-  margin-bottom: 5%;
-}
-
-.title{
-  color: black;
-  font-size: 1.4em;
-}
 
 
-.imgdiv{
-  margin: 20px;
-}
 
 
 .smallImage{
   /*max-width: 100px;*/
 }
 
-.movieRating{
-  border: 5px solid rgb(218,165,32);
-  background-color: goldenrod;
-  color: white;
-  width: 50px;
-  min-height: 50px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 1.4em;
-  padding-top: 2%;
-}
 
 
-.desciption{
-  font-size: .8em;
-  text-align: justify;
-}
 
 
 
 /*  Webpage IDs   */
 
-#movieName{
-  text-align: center;
-}
 
