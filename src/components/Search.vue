@@ -4,6 +4,8 @@
             <b-form-input
                 v-model="searchString"
                 @change="searchChange"
+                placeholder="search a movie"
+                id="searchBox"
             ></b-form-input>
         </b-input-group>
     </div>
@@ -27,5 +29,11 @@ export default {
 </script>
 
 <style>
+#searchBox{
+    width: 90%;
+    text-align: center;
+    color: goldenrod;
+    font-size: 1.2em;
+}
 
 </style>

@@ -1,4 +1,4 @@
-# api-movie-vue
+# Search Movies - Vue.js
 
 ## Project setup
 ```
