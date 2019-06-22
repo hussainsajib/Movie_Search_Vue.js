@@ -54,11 +54,10 @@ export default {
         window.removeEventListener('scroll',this.scrollEvent);
     },
     methods: {
-        scrollEvent: async function(e){
+        scrollEvent: async function(){
             if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
                 this.currentPage++;
                 const data = await getData(this.currentPage, this.status.search, this.searchString);
-                console.log(data);
                 this.movieList = this.movieList.concat(data);
             }
         },
@@ -69,7 +68,6 @@ export default {
             this.status.search = true;
             const data = await getData(this.currentPage, this.status.search, this.searchString);
             this.movieList = this.movieList.concat(data);
-            console.log(string);
         }
     }
 }

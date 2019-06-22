@@ -7,13 +7,11 @@ export default async function(pageNumber, search, query){
     let url;
     if(search){
         url = `${searchURLPart1}${query}&page=${pageNumber}${searchURLPart2}`;
-        console.log(url);
     }
     else{
         url = `${movieURL}${pageNumber}`
     }
     const response = await getData(url);
-    console.log(response.data);
     return response.data;
 }
 
