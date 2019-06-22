@@ -1,5 +1,6 @@
 <template>
     <div id="maincontainer" @scroll="scrollEvent">
+        <Search @change="searchChange" />
         <div v-if="status.errored" class="container">
             <p>There was an error loading the data</p>
         </div>
@@ -19,6 +20,7 @@
 
 <script>
 import getData from '../fetchData'
+import Search from './Search'
 import Movie from './Movie'
 export default {
     name: "Movies",
@@ -33,7 +35,8 @@ export default {
         }
     },
     components: {
-        Movie
+        Movie,
+        Search
     },
     created: async function (){
         try{
@@ -56,6 +59,9 @@ export default {
                 console.log(data);
                 this.movieList = this.movieList.concat(data);
             }
+        },
+        searchChange: function(e){
+            console.log(e);
         }
     }
 }
