@@ -1,5 +1,5 @@
 <template>
-    <div id="maincontainer">
+    <div id="maincontainer" @scroll="scrollEvent">
         <div v-if="status.errored" class="container">
             <p>There was an error loading the data</p>
         </div>
@@ -28,6 +28,7 @@ export default {
                 loading: false,
                 errored: false
             },
+            currentPage: 1,
             movieList: null
         }
     },
@@ -37,10 +38,24 @@ export default {
     created: async function (){
         try{
             this.status.loading = true,
-            this.movieList = await getData();
+            window.addEventListener('scroll',this.scrollEvent);
+            this.movieList = await getData(this.currentPage);
             this.status.loading = false;
         } catch(error){
             this.status.errored = true;
+        }
+    },
+    destroyed: function(){
+        window.removeEventListener('scroll',this.scrollEvent);
+    },
+    methods: {
+        scrollEvent: async function(e){
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+                this.currentPage++;
+                const data = await getData(this.currentPage);
+                console.log(data);
+                this.movieList = this.movieList.concat(data);
+            }
         }
     }
 }
